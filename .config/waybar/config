@@ -4,15 +4,17 @@
     "height": 30,
     "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": ["sway/window"],
-    "modules-right": ["pulseaudio", "network", "cpu", "memory", "tray", "clock"],
+    "modules-right": ["custom/wallpaper", "pulseaudio", "network", "cpu", "memory", "tray", "clock"],
     // Modules configuration
     "sway/workspaces": {
         "disable-scroll": false,
         "all-outputs": true,
-        "format": "{name}{icon}",
+        "format": "{name}",
         "format-icons": {
-            "urgent": " ",
-            "default" : ""
+            "1: Main": "",
+            "2: Web": "",
+            "3: Dev": "",
+            "9: Music": ""
         }
     },
     "sway/mode": {
@@ -22,8 +24,13 @@
     "tray": {
         "spacing": 10
     },
+    
     "clock": {
-        "format-alt": "{:%Y-%m-%d}"
+        "tooltip-format": "{:%Y-%m-%d | %H:%M}",
+        "format": "{:%H:%M:%S} ",
+        "interval": 1,
+        "format-alt": "{:%Y-%m-%d} ",
+        "on-click-right": "wl-copy $(date '+%Y-%m-%d %T')"
     },
     "cpu": {
         "format": "{usage}% "
@@ -54,7 +61,7 @@
         },
         "on-click": "pavucontrol"
     },
-     "custom/pape": {
+     "custom/wallpaper": {
     	"format": "",
     	"on-click": "env XDG_CURRENT_DESKTOP=sway setrandom $(xdg-user-dir PICTURES)/Wallpaper"
     }
