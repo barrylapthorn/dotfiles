@@ -4,8 +4,7 @@
     "height": 30,
     "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": ["sway/window"],
-    "modules-right": [/*"network",*/ "cpu", "memory", "battery", "battery#bat2", "tray", 
-                      "clock"],
+    "modules-right": ["pulseaudio", "network", "cpu", "memory", "tray", "clock"],
     // Modules configuration
     "sway/workspaces": {
         "disable-scroll": false,
@@ -31,24 +30,13 @@
     },
     "memory": {
         "format": "{}% mem"
-    },
-    "battery": {
-        "states": {
-            "good": 95,
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "{capacity}% {icon}",
-        "format-icons": ["", "", "", "", ""]
-    },
-    "battery#bat2": {
-        "bat": "BAT2"
-    },
+    }, 
     "network": {
-        // "interface": "wlp2s0", // (Optional) To force the use of this interface
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
-        "format-disconnected": "Disconnected ⚠"
+        "format-wifi": "{ipaddr} ({signalStrength}%) ",
+        "format-ethernet": "{ipaddr} ",
+        "format-disconnected": "Disconnected ⚠",
+        "on-click": "wl-copy $(ip address show up scope global | grep inet | head -n1 | cut -d/ -f 1 | tr -d [:space:] | cut -c5-)",
+        "on-click-right": "wl-copy $(ip address show up scope global | grep inet6 | head -n1 | cut -d/ -f 1 | tr -d [:space:] | cut -c6-)"
     },
     "pulseaudio": {
         //"scroll-step": 1,
@@ -65,5 +53,9 @@
             "default": ["", ""]
         },
         "on-click": "pavucontrol"
+    },
+     "custom/pape": {
+    	"format": "",
+    	"on-click": "env XDG_CURRENT_DESKTOP=sway setrandom $(xdg-user-dir PICTURES)/Wallpaper"
     }
 }
