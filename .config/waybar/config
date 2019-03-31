@@ -1,68 +1,76 @@
 {
-    "layer": "top",
-    "position": "top",
-    "height": 30,
-    "modules-left": ["sway/workspaces", "sway/mode"],
-    "modules-center": ["sway/window"],
-    "modules-right": ["custom/wallpaper", "pulseaudio", "network", "cpu", "memory", "tray", "clock"],
-    // Modules configuration
-    "sway/workspaces": {
-        "disable-scroll": false,
-        "all-outputs": true,
-        "format": "{name}",
-        "format-icons": {
-            "1: Main": "",
-            "2: Web": "",
-            "3: Dev": "",
-            "9: Music": ""
-        }
-    },
-    "sway/mode": {
-        "format": "<span style=\"normal\">{}</span>",
-        "on-click": "swaymsg 'mode \"resize\"'"
-    },
-    "tray": {
-        "spacing": 10
-    },
-    
-    "clock": {
-        "tooltip-format": "{:%Y-%m-%d | %H:%M}",
-        "format": "{:%H:%M:%S} ",
-        "interval": 1,
-        "format-alt": "{:%Y-%m-%d} ",
-        "on-click-right": "wl-copy $(date '+%Y-%m-%d %T')"
-    },
-    "cpu": {
-        "format": "{usage}% "
-    },
-    "memory": {
-        "format": "{}% mem"
-    }, 
-    "network": {
-        "format-wifi": "{ipaddr} ({signalStrength}%) ",
-        "format-ethernet": "{ipaddr} ",
-        "format-disconnected": "Disconnected ⚠",
-        "on-click": "wl-copy $(ip address show up scope global | grep inet | head -n1 | cut -d/ -f 1 | tr -d [:space:] | cut -c5-)",
-        "on-click-right": "wl-copy $(ip address show up scope global | grep inet6 | head -n1 | cut -d/ -f 1 | tr -d [:space:] | cut -c6-)"
-    },
-    "pulseaudio": {
-        //"scroll-step": 1,
-        "format": "{volume}% {icon}",
-        "format-bluetooth": "{volume}% {icon}",
-        "format-muted": "",
-        "format-icons": {
-            "headphones": "",
-            "handsfree": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", ""]
-        },
-        "on-click": "pavucontrol"
-    },
-     "custom/wallpaper": {
-    	"format": "",
-    	"on-click": "env XDG_CURRENT_DESKTOP=sway setrandom $(xdg-user-dir PICTURES)/Wallpaper"
+  "layer": "top",
+  "position": "top",
+  "height": 30,
+  "modules-left": ["sway/workspaces", "sway/mode"],
+  "modules-center": ["sway/window"],
+  "modules-right": [
+    "custom/wallpaper",
+    "pulseaudio",
+    "network",
+    "cpu",
+    "memory",
+    "tray",
+    "clock"
+  ],
+  // Modules configuration
+  "sway/workspaces": {
+    "disable-scroll": false,
+    "all-outputs": true,
+    "format": "{name}",
+    "format-icons": {
+      "1: Main": "",
+      "2: Web": "",
+      "3: Dev": "",
+      "9: Music": ""
     }
+  },
+  "sway/mode": {
+    "format": "<span style=\"normal\">{}</span>",
+    "on-click": "swaymsg 'mode \"resize\"'"
+  },
+  "tray": {
+    "spacing": 10
+  },
+
+  "clock": {
+    "tooltip-format": "{:%Y-%m-%d | %H:%M}",
+    "format": "{:%H:%M:%S} ",
+    "interval": 1,
+    "format-alt": "{:%Y-%m-%d} ",
+    "on-click-right": "wl-copy $(date '+%Y-%m-%d %T')"
+  },
+  "cpu": {
+    "format": "{usage}% "
+  },
+  "memory": {
+    "format": "{}% mem"
+  },
+  "network": {
+    "format-wifi": "{ipaddr} ({signalStrength}%) ",
+    "format-ethernet": "{ipaddr} ",
+    "format-disconnected": "Disconnected ⚠",
+    "on-click": "wl-copy $(ip address show up scope global | grep inet | head -n1 | cut -d/ -f 1 | tr -d [:space:] | cut -c5-)",
+    "on-click-right": "wl-copy $(ip address show up scope global | grep inet6 | head -n1 | cut -d/ -f 1 | tr -d [:space:] | cut -c6-)"
+  },
+  "pulseaudio": {
+    //"scroll-step": 1,
+    "format": "{volume}% {icon}",
+    "format-bluetooth": "{volume}% {icon}",
+    "format-muted": "",
+    "format-icons": {
+      "headphones": "",
+      "handsfree": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["", ""]
+    },
+    "on-click": "pavucontrol"
+  },
+  "custom/wallpaper": {
+    "format": "",
+    "on-click": "swaymsg 'output * bg $(wallpaper) fill'"
+  }
 }

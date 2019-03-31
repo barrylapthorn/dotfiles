@@ -32,7 +32,10 @@ set $lock swaylock
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 #output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-output * bg /home/barry/images/wallpapers/alien.jpg fill
+#output * bg /home/barry/images/wallpapers/alien.jpg fill
+output * bg `wallpaper` fill
+
+exec_always --no-startup-id env XDG_CURRENT_DESKTOP=sway setrandom $HOME/images/wallpapers
 
 output HDMI-A-1 scale 1.25
 #
@@ -219,7 +222,8 @@ bindsym $mod+ctrl+minus gaps inner all minus 10
 
 bindsym $mod+shift+ctrl+l exec $lock --color 000000
 
-input "1133:16502:Logitech_K540/K545" {
+# My logitech keyboard
+input "*" {
 	xkb_layout gb
 }
 
@@ -257,3 +261,4 @@ bar {
 exec --no-startup-id pulseaudio --start
 
 include /etc/sway/config.d/*
+
