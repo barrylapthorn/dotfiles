@@ -2,6 +2,7 @@
 import glob
 import random
 import sys
+import os
 
 args = sys.argv[1:]
 
@@ -14,3 +15,4 @@ for source in args:
     walls += glob.glob("/home/barry/images/wallpapers/" + source + "/*.*")
 
 print(random.choice(walls))
+

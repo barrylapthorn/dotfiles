@@ -18,25 +18,26 @@ set $down j
 set $up k
 set $right l
 
-# Your preferred terminal emulator
+# Preferred terminal emulator
 set $term alacritty
 
-# Your preferred application launcher
+# Preferred application launcher
 # Note: it's recommended that you pass the final command to sway
 set $menu dmenu_path | dmenu | xargs swaymsg exec
 
 # BTL - just use swaylock to lock the screen
-set $lock swaylock
+# we use a bash script, see below
+# set $lock swaylock
 
 ### Output configuration
-#
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-#output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-#output * bg /home/barry/images/wallpapers/alien.jpg fill
-output * bg `wallpaper` fill
 
-exec_always --no-startup-id env XDG_CURRENT_DESKTOP=sway setrandom $HOME/images/wallpapers
+output * bg `$HOME/.config/sway/wallpaper` fill
 
+# Before any colours are used.
+#include "$HOME/.cache/wal/colors-sway"
+
+
+# Set our screen magnification - 4k on 27" is a bit small...
 output HDMI-A-1 scale 1.25
 #
 # Example configuration:
@@ -220,7 +221,9 @@ bindsym $mod+ctrl+equal gaps inner all plus 10
 bindsym $mod+ctrl+shift+minus gaps inner all minus 1
 bindsym $mod+ctrl+minus gaps inner all minus 10
 
-bindsym $mod+shift+ctrl+l exec $lock --color 000000
+# Old direct swaylock command
+#bindsym $mod+shift+ctrl+l exec $lock --color 000000
+bindsym $mod+shift+ctrl+l exec $HOME/.config/swaylock/lock.bash 50
 
 # My logitech keyboard
 input "*" {

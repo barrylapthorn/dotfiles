@@ -7,7 +7,7 @@
   "modules-right": [
     "custom/wallpaper",
     "pulseaudio",
-    "network",
+    //"network",
     "cpu",
     "memory",
     "tray",
@@ -71,6 +71,6 @@
   },
   "custom/wallpaper": {
     "format": "",
-    "on-click": "swaymsg 'output * bg $(wallpaper) fill'"
+    "on-click": "swaymsg 'output * bg $($HOME/.config/sway/wallpaper) fill'"
   }
 }
