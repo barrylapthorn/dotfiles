@@ -7,7 +7,7 @@
 
 # Anything that sway needs to run needs to be on the path
 # before we run sway.
-export PATH=$PATH:/home/barry/bin
+export PATH=$PATH:$HOME/bin
 
 if [ "$XDG_RUNTIME_DIR" == "" ]
 then
@@ -40,7 +40,7 @@ PS1='[\u@\h \W]\$ '
 alias config='/usr/bin/git --git-dir=$HOME/.mydotfiles.git/ --work-tree=$HOME'
 
 #  Pylinter
-pupdate /home/barry/.local/bin
+pupdate $HOME/.local/bin
 
 source /usr/share/git/completion/git-completion.bash
 source /usr/share/git/completion/git-prompt.sh
