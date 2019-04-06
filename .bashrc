@@ -42,6 +42,11 @@ alias config='/usr/bin/git --git-dir=$HOME/.mydotfiles.git/ --work-tree=$HOME'
 #  Pylinter
 pupdate /home/barry/.local/bin
 
+source /usr/share/git/completion/git-completion.bash
+source /usr/share/git/completion/git-prompt.sh
+
+export GIT_PS1_SHOWCOLORHINTS
+export PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
 
 # This should  be last thing in bashrc so that we've set everything that 
 # sway might need.
