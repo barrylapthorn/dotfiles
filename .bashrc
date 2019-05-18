@@ -50,6 +50,7 @@ function colour_my_prompt {
 colour_my_prompt
 
 # Run an ssh-agent so that it stores the local passphrases for ssh keys if needed.
+# Then run ssh-add ~/.ssh/id_rsa
 # todo:  add this to systemd?
 if ! pgrep -u "$USER" ssh-agent > /dev/null; then
     ssh-agent > ~/.ssh-agent-thing
