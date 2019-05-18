@@ -49,6 +49,16 @@ function colour_my_prompt {
 # https://stackoverflow.com/a/6086978
 colour_my_prompt
 
+# Run an ssh-agent so that it stores the local passphrases for ssh keys if needed.
+# todo:  add this to systemd?
+if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+    ssh-agent > ~/.ssh-agent-thing
+fi
+if [[ ! "$SSH_AUTH_SOCK" ]]; then
+    eval "$(<~/.ssh-agent-thing)"
+fi
+
+
 
 # This should be last thing in bashrc so that we've set everything that 
 # sway might need.
