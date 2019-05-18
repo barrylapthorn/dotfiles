@@ -4,6 +4,9 @@ import random
 import sys
 import os
 
+from os.path import expanduser
+home = expanduser("~")
+
 args = sys.argv[1:]
 
 if len(args) == 0:
@@ -12,7 +15,7 @@ if len(args) == 0:
 walls = list()
 
 for source in args:
-    walls += glob.glob("/home/barry/images/wallpapers/" + source + "/*.*")
+    walls += glob.glob(home + "/images/wallpapers/" + source + "/*.*")
 
 print(random.choice(walls))
 
