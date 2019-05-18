@@ -15,7 +15,7 @@ if len(args) == 0:
 walls = list()
 
 for source in args:
-    walls += glob.glob(home + "/images/wallpapers/" + source + "/*.*")
+    walls += glob.glob(home + "/Pictures/wallpapers/" + source + "/*.*")
 
 print(random.choice(walls))
 

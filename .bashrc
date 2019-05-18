@@ -15,10 +15,10 @@ then
 fi
 
 export XDG_DESKTOP_DIR="$HOME"
-export XDG_DOWNLOAD_DIR="$HOME/downloads"
-export XDG_DOCUMENTS_DIR="$HOME/documents"
-export XDG_MUSIC_DIR="$HOME/music"
-export XDG_PICTURES_DIR="$HOME/images"
+export XDG_DOWNLOAD_DIR="$HOME/Downloads"
+export XDG_DOCUMENTS_DIR="$HOME/Documents"
+export XDG_MUSIC_DIR="$HOME/Music"
+export XDG_PICTURES_DIR="$HOME/Pictures"
 export XDG_VIDEOS_DIR="$HOME/videos"
 
 #  Add to PATH if not already there
