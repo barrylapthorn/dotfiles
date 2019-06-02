@@ -5,6 +5,48 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# Added https://github.com/ohmybash/oh-my-bash
+export OSH=/home/barry/.oh-my-bash
+
+OSH_THEME="font"
+
+# OSH completions.
+completions=(
+  git
+  composer
+  ssh
+)
+
+# OSH aliases
+# aliases=(
+#   general
+# )
+
+# OSH plugins
+plugins=(
+  git
+  bashmarks
+)
+
+source $OSH/oh-my-bash.sh
+
+#  End of oh-my-bash stuff
+
+
+export SSH_KEY_PATH="~/.ssh/rsa_id"
+
+#  Add to PATH if not already there
+pupdate() { case ":${PATH:=$1}:" in *:$1:*) ;; *) PATH="$PATH:$1" ;; esac; }
+
+# Fix for SwayWM apparently.  https://github.com/swaywm/sway/wiki
+export _JAVA_AWT_WM_NONREPARENTING=1
+
+alias h=history
+alias ls='ls --color=auto'
+
+#  Pylinter
+pupdate $HOME/.local/bin
+
 # Anything that sway needs to run needs to be on the path
 # before we run sway.
 export PATH=$PATH:$HOME/bin
@@ -21,37 +63,6 @@ export XDG_MUSIC_DIR="$HOME/Music"
 export XDG_PICTURES_DIR="$HOME/Pictures"
 export XDG_VIDEOS_DIR="$HOME/videos"
 
-#  Add to PATH if not already there
-pupdate() { case ":${PATH:=$1}:" in *:$1:*) ;; *) PATH="$PATH:$1" ;; esac; }
-
-# Fix for SwayWM apparently.  https://github.com/swaywm/sway/wiki
-export _JAVA_AWT_WM_NONREPARENTING=1
-
-alias h=history
-alias ls='ls --color=auto'
-
-#  Pylinter
-pupdate $HOME/.local/bin
-
-source /usr/share/git/completion/git-completion.bash
-source /usr/share/git/completion/git-prompt.sh
-
-function colour_my_prompt {
-    local __user_and_host="\[\033[01;32m\]\u@\h"
-    local __cur_location="\[\033[01;34m\]\w"
-    local __git_branch_color="\[\033[31m\]"
-    local __git_branch='`git branch 2> /dev/null | grep -e ^* | sed -E  s/^\\\\\*\ \(.+\)$/\(\\\\\1\)\ /`'
-    local __prompt_tail="\[\033[35m\]$"
-    local __last_color="\[\033[00m\]"
-    export PS1="$__user_and_host $__cur_location $__git_branch_color$__git_branch$__prompt_tail$__last_color "
-}
-
-# https://stackoverflow.com/a/6086978
-colour_my_prompt
-
-# SSH agent - https://unix.stackexchange.com/a/390631
-
-
 export LOCAL_BASHRC=.$(hostname).bashrc
 
 if [ -f $LOCAL_BASHRC ]; then
@@ -65,4 +76,3 @@ fi
 if [ "$(tty)" = "/dev/tty1" ]; then
 	exec sway
 fi
-
