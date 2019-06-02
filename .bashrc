@@ -49,15 +49,7 @@ function colour_my_prompt {
 # https://stackoverflow.com/a/6086978
 colour_my_prompt
 
-# Run an ssh-agent so that it stores the local passphrases for ssh keys if needed.
-# Then run ssh-add ~/.ssh/id_rsa
-# todo:  add this to systemd?
-if ! pgrep -u "$USER" ssh-agent > /dev/null; then
-    ssh-agent > ~/.ssh-agent-thing
-fi
-if [[ ! "$SSH_AUTH_SOCK" ]]; then
-    eval "$(<~/.ssh-agent-thing)"
-fi
+# SSH agent - https://unix.stackexchange.com/a/390631
 
 
 export LOCAL_BASHRC=.$(hostname).bashrc
