@@ -60,6 +60,11 @@ if [[ ! "$SSH_AUTH_SOCK" ]]; then
 fi
 
 
+export LOCAL_BASHRC=.$(hostname).bashrc
+
+if [ -f $LOCAL_BASHRC ]; then
+	source $LOCAL_BASHRC
+fi
 
 # This should be last thing in bashrc so that we've set everything that 
 # sway might need.
@@ -68,3 +73,4 @@ fi
 if [ "$(tty)" = "/dev/tty1" ]; then
 	exec sway
 fi
+
