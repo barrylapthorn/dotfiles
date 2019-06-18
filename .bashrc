@@ -45,6 +45,9 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 alias h=history
 alias ls='ls --color=auto'
 
+# As per https://www.atlassian.com/git/tutorials/dotfiles
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+
 #  Pylinter
 pupdate $HOME/.local/bin
 
@@ -77,3 +80,4 @@ fi
 if [ "$(tty)" = "/dev/tty1" ]; then
 	exec sway
 fi
+
