@@ -28,6 +28,7 @@ plugins=(
   bashmarks
 )
 
+DISABLE_UPDATE_PROMPT=true
 source $OSH/oh-my-bash.sh
 
 #  End of oh-my-bash stuff
