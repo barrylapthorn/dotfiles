@@ -8,7 +8,7 @@
 # Added https://github.com/ohmybash/oh-my-bash
 export OSH=/home/barry/.oh-my-bash
 
-OSH_THEME="font"
+OSH_THEME="agnoster"
 
 # OSH completions.
 completions=(
@@ -77,7 +77,11 @@ fi
 # sway might need.
 
 # If running from tty1 start sway
-if [ "$(tty)" = "/dev/tty1" ]; then
-	exec sway
-fi
+#if [ "$(tty)" = "/dev/tty1" ]; then
+#	exec sway
+#fi
+
+function kde {
+	XDG_SESSION_TYPE=wayland dbus-run-session startplasma-wayland
+}
 
